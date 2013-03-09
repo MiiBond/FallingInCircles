@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta property="og:image" content="http://labs.verold.com/falling-in-circles/images/falling-in-circles.jpg"/>
+<meta property="og:title" content="Falling in Circles: A 3D experiment powered by Verold and Three.js"/>
+<meta property="og:url" content="http://labs.verold.com/falling-in-circles"/>
+<meta property="og:site_name" content="Falling in Circles: A 3D experiment powered by Verold and Three.js"/>
+<meta property="og:description" content="An interactive simulation of more than 260,000 asteroids, running in your web browser. This WebGL experiment demonstrates the gravitational balance that exists at the L4 and L5 Lagrange points between the Sun and Jupiter. Runs in your browser with no plugin required. Powered by Verold Studio and Three.js."/>
+<meta property="og:type" content="website"/>
+
+
+<head>
+  <title>Falling in Circles: A 3D experiment powered by Verold and Three.js</title>
+  <link rel="stylesheet" href="stylesheets/reset.css">
+  <link rel="stylesheet" href="stylesheets/dat.gui.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/scene-font.css">
+  <script type="text/javascript" src="javascripts/browsercaps.js"></script>
+  <script type="text/javascript" src="http://assets.verold.com/verold_api/verold_api_v1.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <script src="javascripts/jquery.hashchange.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="javascripts/jquery.easytabs.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="javascripts/jquery.nicescroll.min.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body>
+
+  <script type="text/javascript" src="javascripts/ui.js"></script>
+  <script type="text/javascript" src="javascripts/VeroldApp.js"></script>
+  <script type="text/javascript" src="javascripts/GravitationApp.js"></script>
+  <script type="text/javascript" src="javascripts/GPGPUSimulation.js"></script>
+  <script type="text/javascript" src="javascripts/AsteroidSimulation.js"></script>
+  <script type="text/javascript" src="javascripts/TrojanCamera.js"></script>
+  <script type="text/javascript" src="javascripts/dat.gui.min.js"></script>
+
+  <!-- facebook share button dependency -->
+  <div id="fb-root"></div>
+
+  <div id="headers">
+    <h1>FALLING IN CIRCLES</h1>
+    <h2>The Trojan Asteroids</h2>
+  </div>
+
+	<div id="loading-progress-container">
+	 
+    <p>Loading...</p>
+    <div class="loading-progress">
+      <div>&nbsp;</div>
+    </div>
+
+  </div>
+
+  <div style="display:none;" id="webGLunsupported">
+    <p>This demo requires support for WebGL.<br />
+    Click <a href="http://verold.com/blog/2013/1/2/enabling-webgl-in-your-browser" target="_blank">here</a> to learn more.</p>
+  </div>
+
+  <div style="display:none;" id="fpTexturesUnsupported">
+    <p>This demo requires support for floating-point textures. Updating your video card drivers may resolve the issue.<br />
+  </div>
+
+  <div style="display:none;" id="vTexturesUnsupported">
+    <p>This demo requires support for vertex textures. Updating your video card drivers may resolve the issue.<br />
+  </div>
+
+  <div id="info-panel" class="overlay">
+    <a href="javascript:void(0);" class="close">&times;</a>
+    <ul class="etabs clearfix">
+      <li class="tab"><a href="#info">Info</a></li>
+      <li class="tab"><a href="#about">About</a></li>
+      <li class="tab"><a href="#credits">Credits</a></li>
+    </ul>
+
+    <div id="tab-content-container">
+
+      <div id="info" class="tab-content">
+
+        <h2>The Trojan Asteroids</h2>
+        <p>The force of gravity can be described with a very simple equation involving only mass and distance. Despite this, the resulting behaviour of gravitating bodies can be extremely complex, even chaotic, when three or more objects are involved. There are, however, restricted versions of the so-called "three-body" problem that are well understood and can be described mathematically.</p><br>
+        <p>The simulation on the left demonstrates two such situations that were first described by the French mathematician Joseph Lagrange in 1772. For two bodies which have circular orbits, relative to each other, there are two locations where additional objects of negligible mass can remain in a stable lock-step with the larger bodies. This can occur because the centripetal acceleration of the small objects (induced by the gravitational pull of the larger bodies) exactly balances the centrifugal force of the their orbital trajectories. These locations, known as the L4 and L5 points after Lagrange, are stable. A slight perturbation in any direction will be met with a net force causing the object to move back toward the point, leading to what are often referred to as "tadpole" orbits. After this simulation runs for a minute or two, you will start to see asteroids collecting at these locations.</p><br>
+        <p>In 1906, more than one hundred years after Lagrange proposed the existence of these points, the first "Trojan" asteroids were discovered at the L4 and L5 points of the Sun-Jupiter system. Named after mythological heroes on the two opposing sides of the Trojan War, there are dozens that are known and probably thousands that exist.</p><br>
+        <p>For more information, read my <a href="http://verold.com/blog/2013/3/4/falling-in-circles-lagrange-points" target="_blank">blog post</a> about Lagrange points.</p>
+
+      </div>
+
+      <div id="about" class="tab-content">
+
+        <h2>About this Simulation</h2>
+        <p>This demo simulates the effect that the gravitational interaction between the Sun and Jupiter has on about 260,000 asteroids. After it runs for a few minutes, you will begin to see some patterns develop.  First, Jupiter will clear out most of the asteroids from its orbit but will leave some inside its orbit and some outside. Second, you will see two pockets of <a href="http://en.wikipedia.org/wiki/Trojan_Asteroids" target="_blank">"Trojan" asteroids</a> develop about 60 degrees ahead and behind the planet. These are locations of gravitationally stability where the forces balance out and allow objects to remain in lock-step with Jupiter. Select info icon in the top-left of the screen to learn more.</p><br>
+        <p>This simulation of the asteroids is done entirely on your computer's GPU. Normally used for rendering graphics, the GPU is also an extremely powerful vector processor, allowing many calculations to be done in parallel.</p><br>
+        <p><strong>Left mouse button</strong> - Click and hold to spawn asteroids in a circular orbit around the Sun.</p><br>
+        <p><strong>Right mouse button</strong> - Click and hold to spawn asteroids with velocity relative to the mouse. Drag the mouse while spawning to affect their starting velocity.</p><br>
+        <p><strong>Space bar</strong> - Toggle between a Sun and Jupiter perspective. In Jupiter's perspective, the locations of gravitational balance are highlighted.</p><br>
+
+      </div>
+
+      <div id="credits" class="tab-content">
+
+        <h2>Credits</h2>
+        <p><strong>Programming and design:</strong> Michael Bond</p><br>
+        <p><strong>UI Programming and design:</strong> Aaron Cepukas and Carlos Sánchez García</p><br>
+        <p><strong>Assets:</strong></p><br>
+        <p class="pMargin">Jupiter texture map by <a href="http://laps.noaa.gov/albers/sos/sos.html" target="_blank">Steve Albers</a> and the <a href="http://photojournal.jpl.nasa.gov/catalog/PIA07782" target="_blank">JPL</a>.</p><br>
+        <!-- <p class="pMargin">Jupiter title image courtesy of the JPL and the <a href="http://photojournal.jpl.nasa.gov/targetFamily/jupiter?subselect=Spacecraft%3ACassini+Orbiter%3A" target="_blank">Cassini-Huygens</a> mission.</p><br> -->
+        <p><strong>A big thanks to:</strong></p><br>
+        <p class="pMargin">The <a href="http://www.swinburne.edu.au/">Swinburne University of Technology</a> where I'm currently working towards a Masters degree in Astronomy.</p><br>
+        <p class="pMargin">Fraser Cain and Dr. Pamela Gay from <a href="http://www.astronomycast.com/">AstronomyCast</a>, who's weekly show inspired me to make something to help spread my love of astronomy and all the awesomely cool stuff that's out there.</p><br>
+        <p class="pMargin">Mr. Doob, Altered Qualia and the countless others working on <a href="http://mrdoob.github.com/three.js/">Three.JS</a>, the superb open-source library for WebGL development.</p><br>
+        <p class="pMargin"><a href="studio.verold.com">Verold Inc.</a>, for given me to the chance to make this.</p><br>
+
+      </div>
+    
+    </div>
+
+  </div>
+
+  <div id="controls-panel" class="overlay">
+    <a href="javascript:void(0);" class="close">&times;</a>
+
+    <h2>Settings</h2>
+    
+    <p>Here you can adjust the simulation parameters.</p>
+
+    <div id="datgui-container"></div>
+
+    <h3>Keyboard Controls</h3>
+
+    <p><span class="key">Space</span>&nbsp;&nbsp;&nbsp;Toggle between perspectives.</p><br>
+    <p><span class="key">R</span>&nbsp;&nbsp;&nbsp;Reset asteroid orbits.</p>
+
+    <h3>Mouse Controls</h3>
+
+    <p><i class="icon-moon icon-click-left control-icon"></i>&nbsp;&nbsp;&nbsp;Spawn asteroids in orbit.</p>
+    <p><i class="icon-moon icon-click-right control-icon"></i>&nbsp;&nbsp;&nbsp;Spawn asteroids with velocity.</p>
+  </div>
+
+  <div id="share-panel" class="menu">
+    <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://labs.verold.com/falling-in-circles"></div>
+    <div class="fb-like" data-href="http://labs.verold.com/falling-in-circles/" data-send="false" data-layout="button_count" data-width="75" data-show-faces="false" data-colorscheme="light"></div>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://labs.verold.com/falling-in-circles/">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
+
+  <div id="mainMenu" class="menu">
+    <a id="infoLink" class="icon-moon icon-project" href="javascript:void(0);"></a>
+    <a id="controlsLink" class="icon-moon icon-settings" href="javascript:void(0);"></a>
+  </div>
+
+  <div id="footer">
+    <p>Powered by <a href="http://studio.verold.com" target="_blank"><img src="images/verold_logo_white.png" /></a> & <a href="http://mrdoob.github.com/three.js/" target="_blank"><img src="images/three_js_logo.png" height="30" /></a></p>
+  </div>
+
+  <script>
+
+    if (BrowserCaps.isWebGLEnabled()) {
+      if ( BrowserCaps.isFloatingPointTexturesEnabeled() ) {
+        if ( BrowserCaps.isVertexTexturesEnabeled() ) {
+          var veroldApp = new VeroldApp();
+          var gravApp = new GravitationApp( veroldApp );
+
+          VAPI.onReady( function() {
+            
+            veroldApp.initialize( {
+              container : null,
+              projectId : "5106adb643bfc7020000017f",
+              enablePostProcess: false,
+              enablePicking: true,
+              //enableEditorTools: true,
+              handleInput: true,
+              clearColor: 0xff0000,
+              success: function() {
+                gravApp.startup();
+              }
+            });
+          });
+        }
+        else {
+          AppUI.vertexTexturesUnavailable();
+        }
+      }
+      else {
+        AppUI.floatingPointTexturesUnavailable();
+      }
+    } else {
+      AppUI.webGLDisabled();
+    }
+    
+  </script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32112573-1']);
+    _gaq.push(['_setDomainName', 'verold.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+
+</body>
+</html>

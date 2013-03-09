@@ -1,0 +1,200 @@
+@font-face {
+	font-family: 'icomoon';
+	src: url('../fonts/icomoon.eot');
+	src: url('../fonts/icomoon.eot') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf') format('truetype'),
+		url('../fonts/icomoon.svg#icomoon') format('svg'),
+		url('../fonts/icomoon.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.icon-moon {
+	background: none;
+	width: auto;
+    height: auto;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+    font-family: 'icomoon';
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    line-height: 0.0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: 'icomoon';
+    color:#fff;
+	font-size:1.6em;
+    font-style: normal;
+    speak: none;
+    font-weight: normal;
+    line-height: 0.0;
+    -webkit-font-smoothing: antialiased;
+}
+.icon-linkedin:before {
+    content: "\22";
+}
+.icon-twitter:before {
+    content: "\24";
+}
+.icon-mail:before {
+    content: "\25";
+}
+.icon-google-plus:before {
+    content: "\26";
+}
+.icon-facebook:before {
+    content: "\6a";
+}
+.icon-asset:before {
+    content: "\21";
+}
+.icon-material:before {
+    content: "\36";
+}
+.icon-animation:before {
+    content: "\33";
+}
+.icon-texture:before {
+    content: "\32";
+}
+.icon-grid-view:before {
+    content: "\30";
+}
+.icon-list-view:before {
+    content: "\2f";
+}
+.icon-close:before {
+    content: "\2d";
+}
+.icon-popout:before {
+    content: "\2c";
+}
+.icon-headset:before {
+    content: "\2b";
+}
+.icon-share-alt:before {
+    content: "\29";
+}
+.icon-plus:before {
+    content: "\3d";
+}
+.icon-location:before {
+    content: "\23";
+}
+.icon-scene:before {
+    content: "\78";
+}
+.icon-click-left:before {
+    content: "\3b";
+}
+.icon-settings:before {
+    content: "\3c";
+}
+.icon-camera:before {
+    content: "\3a";
+}
+.icon-browse:before {
+    content: "\39";
+}
+.icon-full-screen:before {
+    content: "\38";
+}
+.icon-translate:before {
+    content: "\27";
+}
+.icon-user:before {
+    content: "\2a";
+}
+.icon-panel:before {
+    content: "\31";
+}
+.icon-model:before {
+    content: "\34";
+}
+.icon-help:before {
+    content: "\28";
+}
+.icon-chat:before {
+    content: "\2e";
+}
+.icon-yahoo:before {
+    content: "\35";
+}
+.icon-file-upload:before {
+    content: "\37";
+}
+.icon-share:before {
+    content: "\3e";
+}
+.icon-pencil:before {
+    content: "\40";
+}
+.icon-pencil-2:before {
+    content: "\3f";
+}
+.icon-lightning:before {
+    content: "\42";
+}
+.icon-star:before {
+    content: "\43";
+}
+.icon-search:before {
+    content: "\41";
+}
+.icon-project:before {
+    content: "\4a";
+}
+.icon-play:before {
+    content: "\45";
+}
+.icon-monitor:before {
+    content: "\48";
+}
+.icon-locked:before {
+    content: "\46";
+}
+.icon-broadcast:before {
+    content: "\47";
+}
+.icon-equalizer:before {
+    content: "\49";
+}
+.icon-html5:before {
+    content: "\4b";
+}
+.icon-orbit:before {
+    content: "\4c";
+}
+.icon-markup:before {
+    content: "\4d";
+}
+.icon-first-person:before {
+    content: "\4e";
+}
+.icon-help-alt:before {
+    content: "\4f";
+}
+.icon-video-camera:before {
+    content: "\52";
+}
+.icon-arrow-left:before {
+    content: "\50";
+}
+.icon-arrow-right:before {
+    content: "\51";
+}
+.icon-collaboration:before {
+    content: "\e029";
+}
+.icon-minus:before {
+    content: "\e000";
+}
+.icon-click-right:before {
+  content: "\e001";
+}
