@@ -2,7 +2,6 @@ function VeroldApp( properties ) {
   this.el = undefined;
 
   this.veroldEngine = undefined;
-
 }
 
 VeroldApp.prototype = {
@@ -44,12 +43,6 @@ VeroldApp.prototype = {
       });
 
       that.defaultSceneID = project.get("entityId");
-
-      that.veroldEngine.on( "resize", that.onResize, that );
-
-      window.addEventListener( 'resize', function() {
-        that.veroldEngine.trigger('resize');
-      } );
       
       that.veroldEngine.initialize( {
         "entities": arguments[2], 
@@ -60,6 +53,7 @@ VeroldApp.prototype = {
         "enablePostProcess" : options.enablePostProcess,
         "enablePicking" : options.enablePicking,
         "clearColor" : options.clearColor ? options.clearColor : 0x000000,
+        "forceLowEndRendering" : options.forceLowEndRendering !== undefined ? options.forceLowEndRendering : false,
         // "isWritable" : this.isWritable,
         // "isEmbedded" : this.isEmbedded,
       });
@@ -84,7 +78,6 @@ VeroldApp.prototype = {
 
   uninitialize: function() {
 
-    this.veroldEngine.off( "resize", this.onResize, this );
     this.veroldEngine.uninitialize();
     this.veroldEngine = undefined;
 
@@ -114,14 +107,6 @@ VeroldApp.prototype = {
     }
     else {
       console.warn("VeroldApp.trigger() called before the application has been initialized. Call initialize() first.")
-    }
-  },
-
-  // Events
-  onResize: function() {
-    
-    if (this.veroldEngine) {
-      this.veroldEngine.onResize();
     }
   },
 
@@ -250,5 +235,9 @@ VeroldApp.prototype = {
     script.src= path
     head.appendChild(script);
     script.onload = callback;
+  },
+
+  isMobile : function() {
+    return window.verold && window.verold.isMobile;
   }
 }

@@ -1,10 +1,12 @@
-AsteroidSimulation = function( width, height, renderer ) {
+AsteroidSimulation = function( width, height, renderer, isMobile ) {
 	this.width = width;
 	this.height = height;
 	this.renderer = renderer;
 	this.asteroidSpread = 1.0;
 	this.gravConstant = 0.003;
-	this.particleSystem = null;		
+	this.particleSystem = null;
+	this.pointSize = isMobile ? 2 : 2;
+	this.isMobile = isMobile;
 };
 
 AsteroidSimulation.prototype.initialize = function( planetData ) {
@@ -196,7 +198,7 @@ AsteroidSimulation.prototype.initializeSimulation = function() {
 			"vec2 biasedUv = (vUv - vec2(0.5));",
 			//"biasedUv *= biasedUv;",
 
-			"if ( spawnEnabled != 0.0 && rand(vUv + randSeed.x ) > 0.9985 ) {",
+			"if ( spawnEnabled != 0.0 && rand(vUv + randSeed.x ) > SPAWNRATE ) {",
 				"pos = spawnVector;",
 				"vec2 normBiasedUv = normalize( biasedUv );",
 				"pos.zy += biasedUv * 0.05;",
@@ -223,6 +225,14 @@ AsteroidSimulation.prototype.initializeSimulation = function() {
 
 		"}",
 	].join("\n");
+
+	if ( this.isMobile ) {
+		var spawnRate = 0.997;
+	}
+	else {
+		var spawnRate = 0.9985;
+	}
+	this.simulation_shader_fs = "#define SPAWNRATE " + spawnRate + "\n" + this.simulation_shader_fs;
 
 	var jupiterVelocity = new THREE.Vector2();
 	var sunVelocity = new THREE.Vector2();
@@ -269,7 +279,7 @@ AsteroidSimulation.prototype.initializeSimulation = function() {
 		defines: { "NUM_PLANETS" : this.planetData.length },
 
 	});
-}
+};
 
 AsteroidSimulation.prototype.initAsteroidParticles = function() {
 
@@ -299,22 +309,34 @@ AsteroidSimulation.prototype.initAsteroidParticles = function() {
 		"}",
 	].join("\n");
 
-	this.asteroid_particles_shader_fs = [
-		"uniform sampler2D map;",
+	if ( this.isMobile ) {
+		this.asteroid_particles_shader_fs = [
+			"uniform sampler2D map;",
 
-		"varying vec2 vUv;",
-		"varying vec4 vPosition;",
+			"varying vec2 vUv;",
+			"varying vec4 vPosition;",
 
-		"void main() {",
+			"void main() {",
 
-			// float depth = smoothstep( 750.0, -500.0, gl_FragCoord.z / gl_FragCoord.w );
-			//vec4 sample = texture2D( map, vUv );
-			//gl_FragColor = vec4( vec3(sample.xy, 1.0), 1.0 );
-			//gl_FragColor = vec4( vec3(vPosition.xyz), 1.0 );
-			"gl_FragColor = vec4( 0.15, 0.15, 0.2, 1.0 );",
+				"gl_FragColor = vec4( 0.35, 0.35, 0.45, 1.0 );",
 
-		"}",
-	].join("\n");
+			"}",
+		].join("\n");
+	}
+	else {
+		this.asteroid_particles_shader_fs = [
+			"uniform sampler2D map;",
+
+			"varying vec2 vUv;",
+			"varying vec4 vPosition;",
+
+			"void main() {",
+
+				"gl_FragColor = vec4( 0.15, 0.15, 0.2, 1.0 );",
+
+			"}",
+		].join("\n");
+	}
 
 	var particleGeometry = new THREE.Geometry();
 
@@ -335,7 +357,7 @@ AsteroidSimulation.prototype.initAsteroidParticles = function() {
 			"width": { type: "f", value: this.width },
 			"height": { type: "f", value: this.height },
 
-			"pointSize": { type: "f", value: 2 }
+			"pointSize": { type: "f", value: this.pointSize }
 
 		},
 		vertexShader: this.asteroid_particles_shader_vs,
@@ -350,7 +372,7 @@ AsteroidSimulation.prototype.initAsteroidParticles = function() {
 	particleGeometry.dynamic = false;
 
 	this.particleSystem = new THREE.ParticleSystem( particleGeometry, this.particleMaterial );
-}
+};
 
 AsteroidSimulation.prototype.setSpawnPoint = function( asteroidPosition, asteroidVelocity ) {
 	
@@ -364,19 +386,19 @@ AsteroidSimulation.prototype.setSpawnPoint = function( asteroidPosition, asteroi
 	}
 
 	
-}
+};
 
 AsteroidSimulation.prototype.setSpawnEnabled = function( on ) {
 	this.simulationMaterial.uniforms.spawnEnabled.value = on ? 1.0 : 0.0;
-}
+};
 
 AsteroidSimulation.prototype.getSpawnEnabled = function( ) {
 	return this.simulationMaterial.uniforms.spawnEnabled.value;
-}
+};
 
 AsteroidSimulation.prototype.setSpawnType = function( type ) {
 	this.spawnType = type;
-}
+};
 
 AsteroidSimulation.prototype.update = function( delta ) {
 	//this.timer += delta;
@@ -406,4 +428,4 @@ AsteroidSimulation.prototype.update = function( delta ) {
 	this.simulationMaterial.uniforms.planetData.value[1].y = this.jupiterVector.y;
 	this.gpgpuSim.simulate( );
 	this.particleMaterial.uniforms.map.value = this.gpgpuSim.bufferRT_From;
-}
+};

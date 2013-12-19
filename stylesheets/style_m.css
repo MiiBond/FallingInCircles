@@ -1,0 +1,414 @@
+/* GENERAL */
+
+body, html, canvas {
+  width:100%;
+  height:100%;
+  overflow: hidden;
+}
+
+a {
+  color: #99bbff;
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  color: #aaeeff;
+  text-decoration: underline;
+}
+
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+.clearfix {
+    display: block;
+}
+
+body{
+  font-family: 'Helvetica', sans-serif;
+  background-color:black;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight:200;
+  padding: 5% 20px 20px;
+  color: rgba(255,255,255,0.8);
+  text-shadow: 0 0 10px #5cd6f9;
+  text-align:center;
+  font-size:2.7em;
+}
+
+h2 {
+  font-family: 'Raleway', sans-serif;
+  font-weight:200;
+  padding: 15px 20px 10px 20px;
+  color: rgba(255,255,255,0.8);
+  text-align:center;
+  font-size:2em;
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+}
+
+h3 {
+  font-family: 'Raleway', sans-serif;
+  font-weight:200;
+  padding: 10px 20px;
+  color: rgba(255,255,255,0.8);
+  text-align:center;
+  font-size:2em;
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+}
+
+.pMargin {
+  margin:0 20px;
+
+}
+
+strong {
+  font-weight: bold;
+  color: #ff7777;
+}
+
+.key {
+  background: #999;
+  color: #222;
+  font-weight: bold;
+  padding:5px 9px;
+  line-height: 30px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border:1px solid #ccc;
+  box-shadow: 2px 2px 0px #666;
+  -webkit-box-shadow: 2px 2px 0px #666;
+}
+
+/* LAYOUT */
+
+#page-header {
+  font-family: 'Open Sans', sans-serif;
+  font-weight:300;
+  color:#fff;
+  font-size: 12px;
+  padding: 0 15px;
+  height: 50px;
+}
+
+#page-header img {
+  position:relative;
+  top:7px;
+  margin:0 7px;
+}
+
+#instructions {
+  font-family: 'Open Sans', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  background: #111;
+  color: #fff;
+  padding: 20px;
+  font-weight:300;
+  line-height:1.4em;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: none;
+}
+
+#instructions h2 {
+  margin-bottom: 20px;
+}
+
+#instructions .inst-item {
+  height: 75px;
+}
+
+#instructions .close {
+  float: right;
+  font-size: 16px;
+  margin: 5px 5px 0 0;
+  text-decoration: none;
+  color: #fefefe;
+}
+
+#instructions a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+#instructions p {
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+@media all and (orientation:portrait) {
+  
+  #instructions p {
+    width: 190px;
+  }
+}
+
+#instructions img {
+  float: left;
+  margin-right: 15px;
+}
+
+#fic-container {
+  position:absolute;
+  z-index: 1;
+  bottom: 0;
+  top: 50px;
+  left: 0;
+  right: 0;
+}
+
+#fic-container,
+#info-panel-overflow {
+  /* height: 94%; */
+}
+
+#loading-progress-container {
+  width: 300px;
+  margin: 20px auto;
+  color: #44ABDA;
+}
+
+#loading-progress-container p {
+  margin-bottom:10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#loading-progress-container .loading-progress {
+  border: 1px solid #44ABDA;
+  height: 5px;
+}
+
+#loading-progress-container .loading-progress div {
+  width: 1px;
+  background: #44ABDA;
+  height: 100%;
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(0,0,0,0.8);
+  color: #FFFFFF;
+  padding: 20px;
+  clear: both;
+}
+
+.overlay .icon-moon:before
+{
+  color: #ccc;
+}
+
+.overlay .control-icon {
+  font-size: 36px;
+  vertical-align: middle;
+  line-height: 70px;
+  margin: 0 16px;
+}
+
+.overlay p {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-size:0.85em;
+  font-weight:300;
+  line-height:1.4em;
+}
+
+.overlay h2 {
+  font-weight:400;
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0 20px 20px;
+}
+
+.overlay h3 {
+  font-weight:400;
+  font-size: 1em;
+  margin: 20px 0;
+  text-align: left;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.overlay a.close {
+  float: right;
+  display: block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #999;
+  font-size: 24px;
+  line-height: 0;
+}
+
+.overlay a.close:hover {
+  color: #fff;
+}
+
+#info-panel {
+  padding: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#info-panel-overflow {
+  padding: 20px;
+  overflow-y: auto;
+  height: 95%;
+}
+
+#controls-panel {
+  bottom: auto;
+  height: auto;
+  border-top-right-radius: 0;
+  -webkit-border-top-right-radius: 0;
+}
+
+#controls-panel:after {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 15px 15px 15px;
+  border-color: transparent transparent #333 transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  content: "";
+  top:-15px;
+  right:-1px;
+}
+
+#mainMenu {
+  display: none;
+  position: absolute;
+  z-index: 99;
+}
+
+#share-panel {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#share-panel a:hover {
+  text-decoration: none;
+}
+
+.menu {
+  display: none;
+}
+
+.menu a{
+  margin-left:5px;
+}
+
+.menu a:hover{
+  text-decoration:none;
+  opacity:0.8;
+}
+
+#mainMenu {
+  top: 15px;
+  right: 20px;
+}
+
+#mainMenu img {
+  margin: 0;
+}
+
+#mainMenu .icon-moon.active:before {
+  color: #44ABDA;
+}
+
+#webGLunsupported {
+  position: absolute;
+  left: 50%;
+  width: 300px;
+  height: 50px;
+  margin: -25px 0 0 -150px;
+  color: #999;
+  text-align: center;
+}
+
+#fpTexturesUnsupported {
+  position: absolute;
+  left: 50%;
+  width: 300px;
+  height: 50px;
+  margin: -25px 0 0 -150px;
+  color: #999;
+  text-align: center;
+}
+
+#vTexturesUnsupported {
+  position: absolute;
+  left: 50%;
+  width: 300px;
+  height: 50px;
+  margin: -25px 0 0 -150px;
+  color: #999;
+  text-align: center;
+}
+
+#webGLunsupported ,
+#fpTexturesUnsupported ,
+#vTexturesUnsupported {
+  bottom: 5%;
+}
+
+/* dat.gui styles */
+
+#datgui-container {
+  width: 100%;
+  margin: 20px 0 0 0;
+}
+
+#datgui-container .dg.main {
+  width: auto !important;
+}
+
+/* hide number inputs for sliders */
+#datgui-container .dg .c > div {
+  display: none;
+}
+
+#datgui-container .dg .c .slider {
+  margin-left: -3px !important;
+  height: 8px !important;
+  margin-top: 11px !important;
+  width: 100% !important;
+  display: block;
+}
+
+#datgui-container .dg.main li {
+  background: none !important;
+  border: none !important;
+}
+
+#datgui-container .dg.main li.cr {
+  border-left: none !important;
+}
+
+#datgui-container .close-button {
+  display: none;
+}

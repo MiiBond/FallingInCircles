@@ -2,7 +2,7 @@ TrojanCamera = function(  ) {
 	this.threeCamera;
 	this.asteroidSimulation;
 	this.cameraLock = false;
-	this.eulerRotation = new THREE.Vector3();
+	this.eulerRotation = new THREE.Euler();
 	this.transitionTime = 0;
 	this.inverseTransformation = new THREE.Matrix4();
 	this.screenToWorldPos = new THREE.Vector3();
@@ -13,7 +13,7 @@ TrojanCamera.prototype.initialize = function( fov, width, height, simulation ) {
 
 	this.threeCamera = new THREE.PerspectiveCamera( fov, width / height, 0.05, 20000 );
 	this.threeCamera.position.set( 0.0,0.0,2.5);
-	this.threeCamera.useQuaternion = true;
+	
 	this.asteroidSimulation = simulation;
 	this.inverseTransformation.getInverse( this.threeCamera.projectionMatrix );
 	var viewMatInv = new THREE.Matrix4();
