@@ -28,7 +28,8 @@ GPGPUSimulation = function( textureWidth, textureHeight, renderer, initialData, 
 		magFilter: THREE.NearestFilter,
 		format: textureFormat,
 		type: THREE.FloatType,
-		stencilBuffer: false
+		stencilBuffer: false,
+		generateMipmaps: false,
 	});
 
 	this.bufferRT_From.id = "1";
