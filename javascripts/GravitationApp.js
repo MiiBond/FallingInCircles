@@ -1,27 +1,35 @@
-var GravitationApp = VAPI.VeroldApp.extend({
+var GravitationApp = function( appAsset ) {
   
-  planetData: undefined,
+  this.planetData  = undefined;
+  this.veroldEngine = appAsset.veroldEngine;
+  this.mainScene  = undefined;
+  this.camera = undefined;
+  this.asteroids = undefined;
+  this.mousePos = undefined;
+  this.prevMousePos = undefined;
+  this.mouseVelocity = undefined;
+  this.prevMouseVelocity = undefined;
+  this.mouseAccel = undefined;
+  this.currentTouches = [];
+};
 
-  mainScene : undefined,
-  camera: undefined,
-  asteroids: undefined,
-  mousePos: undefined,
-  prevMousePos: undefined,
-  mouseVelocity: undefined,
-  prevMouseVelocity: undefined,
-  mouseAccel: undefined,
-  currentTouches: []
-});
+GravitationApp.prototype.getInput = function( ) {
+  return this.veroldEngine.Input;
+};
 
-GravitationApp.prototype.engineReady = function( ) {
+GravitationApp.prototype.getThreeRenderer = function( ) {
+  return this.veroldEngine.getThreeRenderer();
+};
 
-  this.inputHandler = this.veroldEngine.Input;
-  this.renderer = this.getRenderer();
-  this.picker = this.getPicker();
-  this.assetRegistry = this.getAssetRegistry();
+GravitationApp.prototype.run = function( ) {
 
-  this.on("info_show", this.enableJupiterView, this );
-  this.on("info_hide", this.disableJupiterView, this );
+  this.inputHandler = this.getInput();
+  this.renderer = this.getThreeRenderer();
+  // this.picker = this.getPicker();
+  this.assetRegistry = this.veroldEngine.assetRegistry;
+
+  this.veroldEngine.on("info_show", this.enableJupiterView, this );
+  this.veroldEngine.on("info_hide", this.disableJupiterView, this );
   this.veroldEngine.on("resize", this.onResize, this);
   
 
@@ -37,8 +45,8 @@ GravitationApp.prototype.engineReady = function( ) {
   // if ( this.veroldEngine.Renderer.forceLowEndRendering ) {
   //   console.warn("We're on a mobile device so we're running with only 16384 asteroids.");
   // }
-  this.textureWidth = this.isMobile() ? 128 : 512;
-  this.textureHeight = this.isMobile() ? 128 : 512;
+  this.textureWidth = VAPI.isMobile() ? 128 : 512;
+  this.textureHeight = VAPI.isMobile() ? 128 : 512;
   this.initPlanets();
   
   this.mousePos = new THREE.Vector2();
@@ -95,7 +103,7 @@ GravitationApp.prototype.engineReady = function( ) {
     }
   };
 
-  this.mainScene = this.assetRegistry.Scenes.getAsset( "5106adb643bfc70200000181" );
+  this.mainScene = this.assetRegistry.Scenes.getAssetById( "5106adb643bfc70200000181" );
 
 	this.mainScene.load( {
     load_base: function( scene ) {
@@ -111,21 +119,24 @@ GravitationApp.prototype.engineReady = function( ) {
         that.veroldEngine.trigger("resize");
       };
 
-      var mqOrientation = window.matchMedia("(orientation: portrait)");
+      if ( VAPI.isMobile() ) {
 
-      // The Listener will fire whenever this either matches or ceases to match
-      mqOrientation.addListener(function() { window.onorientationchange(); });
+        var mqOrientation = window.matchMedia("(orientation: portrait)");
 
-      // that.on("touchStart", that.onTouchStart, that);
-      // that.on("touchEnd", that.onTouchEnd, that);
-      // that.on("touchMove", that.onTouchMove, that);
-      // that.on("touchLeave", that.onTouchEnd, that);
-      // that.on("touchCancel", that.onTouchEnd, that);
-      that.renderer.domElement.addEventListener("touchstart", function( event ) { that.onTouchStart( event ); }, false );
-      that.renderer.domElement.addEventListener("touchend", function( event ) { that.onTouchEnd( event ); }, false );
-      that.renderer.domElement.addEventListener("touchmove", function( event ) { that.onTouchMove( event ); }, false );
-      that.renderer.domElement.addEventListener("touchleave", function( event ) { that.onTouchEnd( event ); }, false );
-      that.renderer.domElement.addEventListener("touchcancel", function( event ) { that.onTouchEnd( event ); }, false );
+        // The Listener will fire whenever this either matches or ceases to match
+        mqOrientation.addListener(function() { window.onorientationchange(); });
+
+        // that.on("touchStart", that.onTouchStart, that);
+        // that.on("touchEnd", that.onTouchEnd, that);
+        // that.on("touchMove", that.onTouchMove, that);
+        // that.on("touchLeave", that.onTouchEnd, that);
+        // that.on("touchCancel", that.onTouchEnd, that);
+        that.renderer.domElement.addEventListener("touchstart", function( event ) { that.onTouchStart( event ); }, false );
+        that.renderer.domElement.addEventListener("touchend", function( event ) { that.onTouchEnd( event ); }, false );
+        that.renderer.domElement.addEventListener("touchmove", function( event ) { that.onTouchMove( event ); }, false );
+        that.renderer.domElement.addEventListener("touchleave", function( event ) { that.onTouchEnd( event ); }, false );
+        that.renderer.domElement.addEventListener("touchcancel", function( event ) { that.onTouchEnd( event ); }, false );
+      }
 
       that.camera = new TrojanCamera();
       that.camera.initialize( 50, window.innerWidth, window.innerHeight, that.asteroids );
@@ -134,12 +145,12 @@ GravitationApp.prototype.engineReady = function( ) {
       that.camera.moveTo( { x: 1.0, y: 0.25, z: 0.00 }, { x: 0.0, y: 0, z: 0, w: 1} );
       that.camera.threeCamera.up.set( 0, 0, 1);
 
-      var models = that.mainScene.getAllObjects( { filter: { model: true }} );
+      var models = that.mainScene.getObjects( { type: 'model'} );
       that.jupiter = models[ _.keys( models )[0] ];
       that.jupiter.set( {"payload.position" : { x : that.planetData[1].x, y : that.planetData[1].y, z:0 }});
       that.jupiter.load( { 
         load: function( jupiter ) {
-          that.asteroids = new AsteroidSimulation( that.textureWidth, that.textureHeight, that.getRenderer(), that.isMobile() );
+          that.asteroids = new AsteroidSimulation( that.textureWidth, that.textureHeight, that.getThreeRenderer(), VAPI.isMobile() );
           that.asteroids.initialize( that.planetData );
           that.mainScene.threeData.add( that.asteroids.particleSystem );
           that.camera.asteroidSimulation = that.asteroids;
@@ -147,7 +158,7 @@ GravitationApp.prototype.engineReady = function( ) {
           AppUI.hideLoadingProgress();
           AppUI.showUI();
           var cameraDist = 2.5;
-          if ( that.isMobile() && window.orientation !== 90 && window.orientation !== -90 ) {
+          if ( VAPI.isMobile() && window.orientation !== 90 && window.orientation !== -90 ) {
             cameraDist = 4;
           }
           
@@ -160,7 +171,7 @@ GravitationApp.prototype.engineReady = function( ) {
           that.initDebugTexture();
           that.initGravityFieldTexture();
 
-          // if ( that.isMobile() && ( window.orientation == 90 || window.orientation == -90 ) ) {
+          // if ( VAPI.isMobile() && ( window.orientation == 90 || window.orientation == -90 ) ) {
           //   that.camera.threeCamera.position.z = 2.5;
           //   that.enableJupiterView();
           // }
@@ -185,7 +196,7 @@ GravitationApp.prototype.engineReady = function( ) {
             
       that.mainScene.threeData.add( that.camera.getCamera() );
       
-      that.initSun( "5106aee5ec062d18180000dd" );
+      // that.initSun( "5106aee5ec062d18180000dd" );
 
     },
 
@@ -239,69 +250,69 @@ GravitationApp.prototype.initPlanets = function() {
 
 };
 
-GravitationApp.prototype.initSun = function( textureID ) {
+// GravitationApp.prototype.initSun = function( textureID ) {
 
-  var that = this;
-  var sunTexture = this.assetRegistry.Textures.getAsset( textureID, { autoLoad: true,
-    load: function( tex ) {
-      that.sunMat.uniforms.texture.value = tex.threeData;
-    }
-  } );
+  // var that = this;
+  // var sunTexture = this.assetRegistry.Textures.getAssetById( textureID, { autoLoad: true,
+  //   load: function( tex ) {
+  //     that.sunMat.uniforms.texture.value = tex.threeData;
+  //   }
+  // } );
 
-  var sun_vs = [
-      "varying vec2 vUv;",
+  // var sun_vs = [
+  //     "varying vec2 vUv;",
       
-      "void main() {",
+  //     "void main() {",
 
-        "vUv = uv;",
-        "gl_Position = projectionMatrix * modelViewMatrix * vec4( position.xyz, 1.0 );",
+  //       "vUv = uv;",
+  //       "gl_Position = projectionMatrix * modelViewMatrix * vec4( position.xyz, 1.0 );",
 
-      "}",
-    ].join("\n");
+  //     "}",
+  //   ].join("\n");
 
-  var sun_fs = [
+  // var sun_fs = [
 
-    "uniform sampler2D texture;",
-    "varying vec2 vUv;",
-    "void main() {",
+  //   "uniform sampler2D texture;",
+  //   "varying vec2 vUv;",
+  //   "void main() {",
 
-      "vec3 sample = texture2D( texture, vUv ).xyz;",
-      "gl_FragColor = vec4( sample, 1.0 );",
-    "}",
-  ].join("\n");
+  //     "vec3 sample = texture2D( texture, vUv ).xyz;",
+  //     "gl_FragColor = vec4( sample, 1.0 );",
+  //   "}",
+  // ].join("\n");
 
-  this.sunMat = new THREE.ShaderMaterial( {
+  // this.sunMat = new THREE.ShaderMaterial( {
 
-    uniforms: {
+  //   uniforms: {
 
-      "texture": { type: "t", value: this.assetRegistry.getAsset("black").threeData },
+  //     "texture": { type: "t", value: this.assetRegistry.getAssetById("black").threeData },
 
-    },
-    vertexShader: sun_vs,
-    fragmentShader: sun_fs,
-    depthTest: false,
-    depthWrite: false,
-    transparent: true,
-    blending: THREE.AdditiveBlending
-  } );
+  //   },
+  //   vertexShader: sun_vs,
+  //   fragmentShader: sun_fs,
+  //   depthTest: false,
+  //   depthWrite: false,
+  //   transparent: true,
+  //   blending: THREE.AdditiveBlending
+  // } );
 
-  var plane = new THREE.PlaneGeometry( 1.0, 1.0 );
-  this.sunQuad = new THREE.Mesh(plane, this.sunMat);
-  //quad.rotation.x = Math.PI / 2;
-  this.sunQuad.position.z = 0;
-  this.mainScene.threeData.add( this.sunQuad );
+  // var plane = new THREE.PlaneGeometry( 1.0, 1.0 );
+  // this.sunQuad = new THREE.Mesh(plane, this.sunMat);
+  // //quad.rotation.x = Math.PI / 2;
+  // this.sunQuad.position.z = 0;
+  // this.mainScene.threeData.add( this.sunQuad );
 
-  this.mainScene.traverse( function( obj ) {
-    if ( obj instanceof VAPI.LightObject ) {
-      that.mainScene.removeChildObject( obj );
-      //obj.destroy( { save: false });
-    }
-  });
+  // this.mainScene.traverse( function( obj ) {
+  //   if ( obj instanceof VAPI.LightObject ) {
+  //     that.mainScene.removeChild( obj );
+  //     //obj.destroy( { save: false });
+  //   }
+  // });
 
-  var sunLight = new THREE.PointLight( 0xffffdd, 1.25, 10.0 );
-  this.sunQuad.add( sunLight );
-  this.assetRegistry.Materials.rebuildAll();
-};
+  // var sunLight = new THREE.PointLight( 0xffffdd, 1.25, 10.0 );
+  // this.mainScene.threeData.add( sunLight );
+  // this.assetRegistry.Materials.rebuildAll();
+// };
 
 GravitationApp.prototype.initDebugTexture = function() {
   //Shaders for rendering debug floating point texture
@@ -473,8 +484,8 @@ GravitationApp.prototype.update = function( delta ) {
       if ( this.jupiter.threeData ) {
         this.jupiter.threeData.position.x = this.asteroids.jupiterVector.x;
         this.jupiter.threeData.position.y = this.asteroids.jupiterVector.y;
-        this.sunQuad.position.x = this.asteroids.sunVector.x;
-        this.sunQuad.position.y = this.asteroids.sunVector.y;
+        // this.sunQuad.position.x = this.asteroids.sunVector.x;
+        // this.sunQuad.position.y = this.asteroids.sunVector.y;
       }
       
       this.prevMouseVelocity = this.mouseVelocity;
@@ -522,8 +533,8 @@ GravitationApp.prototype.update = function( delta ) {
 
 GravitationApp.prototype.onMouseMove = function( event ) {
 
-  this.mousePos.x = ( event.sceneX / this.veroldEngine.renderController.getWidth() - 0.5 ) * 2.0;
-  this.mousePos.y = -( event.sceneY / this.veroldEngine.renderController.getHeight() - 0.5 ) * 2.0;
+  this.mousePos.x = ( event.sceneX / this.veroldEngine.getBaseRenderer().getWidth() - 0.5 ) * 2.0;
+  this.mousePos.y = -( event.sceneY / this.veroldEngine.getBaseRenderer().getHeight() - 0.5 ) * 2.0;
 };
 
 GravitationApp.prototype.onMouseDown = function( event ) {
@@ -541,16 +552,16 @@ GravitationApp.prototype.onMouseDown = function( event ) {
     
     // var scene = this.veroldEngine.assetRegistry.assets[ this.currentSceneID ].threeData;
     // var camera = this.veroldEngine.getActiveCamera();
-    var mouseX = event.sceneX / this.veroldEngine.renderController.getWidth();
-    var mouseY = event.sceneY / this.veroldEngine.renderController.getHeight();
-    var pickData = this.picker.pick( this.mainScene.threeData, this.camera.getCamera(), mouseX, mouseY );
-    if ( pickData ) {
-      if ( pickData.modelID == "5106b54943bfc70200000194" && !this.camera.transitionTargetPos ) {
-        //Jupiter was clicked
-        this.camera.toggleCameraLock( );
-        this.toggleGravityField();
-      }
-    }
+    var mouseX = event.sceneX / this.veroldEngine.getBaseRenderer().getWidth();
+    var mouseY = event.sceneY / this.veroldEngine.getBaseRenderer().getHeight();
+    // var pickData = this.picker.pick( this.mainScene.threeData, this.camera.getCamera(), mouseX, mouseY );
+    // if ( pickData ) {
+    //   if ( pickData.modelID == "5106b54943bfc70200000194" && !this.camera.transitionTargetPos ) {
+    //     //Jupiter was clicked
+    //     this.camera.toggleCameraLock( );
+    //     this.toggleGravityField();
+    //   }
+    // }
 
   }
 };
@@ -675,4 +686,3 @@ GravitationApp.prototype.disableJupiterView = function( ) {
   this.camera.toggleCameraLock( false );
   this.toggleGravityField( false );
 };
-

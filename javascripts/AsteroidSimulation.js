@@ -5,7 +5,7 @@ AsteroidSimulation = function( width, height, renderer, isMobile ) {
 	this.asteroidSpread = 1.0;
 	this.gravConstant = 0.003;
 	this.particleSystem = null;
-	this.pointSize = isMobile ? 2 : 2;
+	this.pointSize = isMobile ? 2 : 1;
 	this.isMobile = isMobile;
 };
 
@@ -332,7 +332,7 @@ AsteroidSimulation.prototype.initAsteroidParticles = function() {
 
 			"void main() {",
 
-				"gl_FragColor = vec4( 0.15, 0.15, 0.2, 1.0 );",
+				"gl_FragColor = vec4( 0.25, 0.25, 0.4, 1.0 );",
 
 			"}",
 		].join("\n");

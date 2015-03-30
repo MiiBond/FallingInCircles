@@ -1,0 +1,73 @@
+{
+  "jsonVersion": "0.1",
+  "config": {
+    "runtimeVersion": "0.7.6",
+    "apiBaseUrl": "",
+    "assetsBaseUrl": "",
+    "staticBaseUrl": "",
+    "glAssetsBaseUrl": "production/assets",
+    "development": false
+  },
+  "project": {
+    "id": "5106adb643bfc7020000017f",
+    "userId": "4fbe315558a5fb0100000716",
+    "featured": false,
+    "privacy": "public",
+    "forkable": false,
+    "published": true,
+    "hasModel": true,
+    "title": "Falling in Circles - Trojans",
+    "description": "This project contains assets needed for my Trojan Asteroids WebGL demo. They're loaded by the demo, directly from this project using the Verold API. Find out more here:",
+    "customAttribution": "",
+    "tags": [],
+    "dateCreated": "2013-01-28T16:56:22.461Z",
+    "previewImageUrl": "/media/5106adb643bfc7020000017f/67ebc2/fec95d3f2dd2932dffbc3f9f1223db21project-preview-250x250.jpg",
+    "largeImageUrl": "/media/5106adb643bfc7020000017f/04456a/fec95d3f2dd2932dffbc3f9f1223db21project-preview-600x400.jpg",
+    "originalImageUrl": "/media/5106adb643bfc7020000017f/285958/fec95d3f2dd2932dffbc3f9f1223db21project-preview.png",
+    "collaborators": [
+      "4fbbe9c83896710100000027"
+    ],
+    "renderSettings": {
+      "shadowSettings": {
+        "shadowMapDebug": false,
+        "shadowMapCascade": false,
+        "shadowMapType": 2,
+        "shadowMapEnabled": true
+      }
+    },
+    "media": [],
+    "entityId": "5106adb643bfc70200000181",
+    "startupApplicationId": "539b4fd6c92acfdf770006e9",
+    "counts": {
+      "views": 549,
+      "forks": 0,
+      "follows": 1
+    },
+    "domains": [],
+    "externalResources": [],
+    "allowApi": true,
+    "runnable": true,
+    "attributes": {}
+  },
+  "application": {
+    "id": "55195bc7dada7db432be9028",
+    "projectId": "5106adb643bfc7020000017f",
+    "shortId": "0hE3HN",
+    "settings": {
+      "engineOptions": {
+        "componentSettings": {
+          "enabled": true,
+          "runtime": true,
+          "editor": false,
+          "persistent": true,
+          "nonPersistent": true
+        }
+      },
+      "runtimeVersion": "0.7.6"
+    }
+  },
+  "resources": {
+    "baseUrl": "",
+    "entities": "resources/entities.json"
+  }
+}

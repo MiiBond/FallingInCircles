@@ -1,0 +1,1336 @@
+[
+  {
+    "id": "5106adb643bfc70200000181",
+    "parentAssetId": "5106adb643bfc70200000181",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "scene",
+    "name": "Scene",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "visible": true,
+      "startupCamera": {
+        "targetID": "5106b54943bfc70200000194",
+        "yAngle": 1.0776189374019325,
+        "xAngle": -1.037607904046861,
+        "position": {
+          "z": 6.834071583713117,
+          "y": -28.672337370485536,
+          "x": 88.32618216012953
+        },
+        "orbitDistance": 1.079141427411566,
+        "targetPosition": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 30
+      },
+      "fog": {
+        "type": "FogExp2",
+        "density": 0,
+        "color": 0
+      },
+      "environment": {
+        "groundPlaneMaterial": null,
+        "groundPlaneScale": 12000,
+        "groundPlaneOn": false,
+        "groundPlaneTesselation": 120,
+        "groundPlaneMaterialScale": 30
+      },
+      "userData": {}
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [
+      "editor_mesh_picker",
+      "editor_axis_widget",
+      "editor_bbox_renderer"
+    ],
+    "template": false,
+    "children": {
+      "5106adb643bfc70200000182": true,
+      "5106adb643bfc70200000183": true,
+      "5106b54943bfc70200000194": true,
+      "551978ccdada7db432be925b": true,
+      "55197edfdada7db432be92ac": true
+    }
+  },
+  {
+    "id": "5106adb643bfc70200000183",
+    "parentId": "5106adb643bfc70200000181",
+    "parentAssetId": "5106adb643bfc70200000181",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "light",
+    "name": "Ambient Light",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "type": "AmbientLight",
+      "color": 0
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "children": {}
+  },
+  {
+    "id": "5106aee5ec062d18180000dd",
+    "parentAssetId": "5106aee5ec062d18180000dd",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "texture2D",
+    "name": "sunsprite",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "folder": "678b7cb0509eeb45fb315be248dff95c",
+    "payload": {
+      "mipmaps": [],
+      "generateMipmaps": true,
+      "visible": true,
+      "preferCompression": false,
+      "isNormalMap": false,
+      "flipY": true,
+      "anisotropy": 1,
+      "vMapping": "Wrap",
+      "uMapping": "Wrap",
+      "filtering": "Trilinear"
+    },
+    "resources": [
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 256,
+          "width": 256
+        },
+        "path": "sunsprite.jpg",
+        "contentType": "image/jpeg",
+        "contentLength": 0,
+        "contentLengthIdentity": 0,
+        "_id": "54db8ee37cd7b08718e637bd"
+      }
+    ],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "hasPreview": true,
+    "children": {}
+  },
+  {
+    "id": "5106b4b22df8ee35210000b3",
+    "parentAssetId": "5106b4b22df8ee35210000b3",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "model",
+    "name": "Jupiter_1",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "selectable": true,
+      "opacity": 1,
+      "receiveShadow": false,
+      "castShadow": false,
+      "scale": {
+        "z": 1,
+        "y": 1,
+        "x": 1
+      },
+      "position": {
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "orientation": {
+        "w": 1,
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "boundingbox": {
+        "max": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "min": {
+          "x": -1,
+          "y": -1,
+          "z": -1
+        }
+      },
+      "modelData": {
+        "meshCount": 1,
+        "totalVertices": 382,
+        "totalFaces": 400
+      }
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "hasPreview": true,
+    "children": {
+      "5106b4b32df8ee35210000b5": true
+    }
+  },
+  {
+    "id": "5106b4b32df8ee35210000b4",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "material",
+    "name": "Jupiter",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "Features": {
+        "Emissive": {
+          "SubFeatures": {
+            "Emissive Texture": {
+              "enabled": false
+            }
+          },
+          "enabled": false
+        },
+        "Normals": {
+          "SubFeatures": {
+            "Normal Texture": {
+              "enabled": false
+            }
+          },
+          "enabled": false
+        },
+        "Reflections": {
+          "enabled": false
+        },
+        "Specular": {
+          "SubFeatures": {
+            "Specular Texture": {
+              "enabled": false
+            }
+          },
+          "enabled": false
+        },
+        "Diffuse Color": {
+          "SubFeatures": {
+            "Diffuse Texture": {
+              "enabled": true
+            }
+          },
+          "enabled": true
+        }
+      },
+      "environmentTexture": "5321f809398d4a082d000509",
+      "diffuseColor": 16777215,
+      "reflectionBias": 0,
+      "colorOpacity": 1,
+      "materialType": "Standard",
+      "diffuseTexture": "5106b5232df8ee35210000b6",
+      "specularColor": 0
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "children": {}
+  },
+  {
+    "id": "5106b4b32df8ee35210000b5",
+    "parentId": "5106b4b22df8ee35210000b3",
+    "parentAssetId": "5106b4b22df8ee35210000b3",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "mesh",
+    "name": "pSphere1",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "folder": "0ef39114851b968174b0185ff5c9c145",
+    "payload": {
+      "size_uncompressed": 43282,
+      "faceCount": 400,
+      "vertexCount": 382,
+      "boundingbox": {
+        "min": {
+          "x": -1,
+          "y": -1,
+          "z": -1
+        },
+        "max": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "geometry": "Embed_30_pSphere1.js",
+      "material": "5106b4b32df8ee35210000b4",
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      }
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "children": {}
+  },
+  {
+    "id": "5106b5232df8ee35210000b6",
+    "parentAssetId": "5106b5232df8ee35210000b6",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "texture2D",
+    "name": "jupiter_rgb",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "folder": "7cf1cd0335fb2142fc84e0c3b461c3fb",
+    "payload": {
+      "userData": {},
+      "uMapping": "Wrap",
+      "vMapping": "Wrap",
+      "filtering": "Trilinear",
+      "anisotropy": 10,
+      "flipY": true,
+      "isNormalMap": false,
+      "preferCompression": true
+    },
+    "resources": [
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 2048,
+          "width": 2048
+        },
+        "path": "jupiter_rgb.jpg",
+        "contentType": "image/jpeg",
+        "contentLength": 0,
+        "contentLengthIdentity": 0,
+        "_id": "54db8ee37cd7b08718e637be"
+      }
+    ],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "hasPreview": true,
+    "children": {}
+  },
+  {
+    "id": "5106b54943bfc70200000194",
+    "prefabObjectId": "5106b4b22df8ee35210000b3",
+    "prefabAssetId": "5106b4b22df8ee35210000b3",
+    "sourceObjectId": "5106b4b22df8ee35210000b3",
+    "sourceAssetId": "5106b4b22df8ee35210000b3",
+    "prefabInstanceId": "5106b54943bfc70200000194",
+    "parentId": "5106adb643bfc70200000181",
+    "parentAssetId": "5106adb643bfc70200000181",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "model",
+    "name": "sphere",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "modelData": {
+        "totalFaces": 400,
+        "totalVertices": 382,
+        "meshCount": 1
+      },
+      "castShadow": false,
+      "receiveShadow": false,
+      "opacity": 1,
+      "selectable": true,
+      "visible": true,
+      "orientation": {
+        "w": 0.6919009697230818,
+        "z": -0.17193453548131388,
+        "y": -0.1752063582007316,
+        "x": 0.6789803352462579
+      },
+      "boundingbox": {
+        "max": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "min": {
+          "x": -1,
+          "y": -1,
+          "z": -1
+        }
+      },
+      "scale": {
+        "x": 0.05481940805955497,
+        "y": 0.05481940805955497,
+        "z": 0.05481940805955497
+      },
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "center": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scaleToSize": 0.1899
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "children": {
+      "5106b54943bfc70200000195": true
+    }
+  },
+  {
+    "id": "5106b54943bfc70200000195",
+    "prefabObjectId": "5106b4b32df8ee35210000b5",
+    "prefabAssetId": "5106b4b22df8ee35210000b3",
+    "sourceObjectId": "5106b4b32df8ee35210000b5",
+    "sourceAssetId": "5106b4b22df8ee35210000b3",
+    "prefabInstanceId": "5106b54943bfc70200000194",
+    "parentId": "5106b54943bfc70200000194",
+    "parentAssetId": "5106adb643bfc70200000181",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "mesh",
+    "name": "pSphere1",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {},
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "children": {}
+  },
+  {
+    "id": "5321f809398d4a082d000509",
+    "parentAssetId": "5321f809398d4a082d000509",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "textureCube",
+    "name": "MilkyWay",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "folder": "packages/verold_package_52dd3f4b8c2a9bcc14000019/581395d6ac388ded4f68f0169d2580b8",
+    "payload": {
+      "mipmaps": [],
+      "originalWidth": 1024,
+      "originalHeight": 1024,
+      "preferCompression": true,
+      "name": "Texture_With_No_Name",
+      "uMapping": "Wrap",
+      "vMapping": "Wrap",
+      "filtering": "Trilinear",
+      "anisotropy": 1,
+      "flipY": true,
+      "isNormalMap": false,
+      "generateMipmaps": true
+    },
+    "resources": [
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 1024,
+          "width": 1024,
+          "cubeFace": 0
+        },
+        "path": "MilkyWay-tex-0.jpg",
+        "contentLength": 181952.16666666666,
+        "contentLengthIdentity": 181952.16666666666,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f76"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 1024,
+          "width": 1024,
+          "cubeFace": 1
+        },
+        "path": "MilkyWay-tex-1.jpg",
+        "contentLength": 181952.16666666666,
+        "contentLengthIdentity": 181952.16666666666,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f77"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 1024,
+          "width": 1024,
+          "cubeFace": 2
+        },
+        "path": "MilkyWay-tex-2.jpg",
+        "contentLength": 181952.16666666666,
+        "contentLengthIdentity": 181952.16666666666,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f78"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 1024,
+          "width": 1024,
+          "cubeFace": 3
+        },
+        "path": "MilkyWay-tex-3.jpg",
+        "contentLength": 181952.16666666666,
+        "contentLengthIdentity": 181952.16666666666,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f79"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 1024,
+          "width": 1024,
+          "cubeFace": 4
+        },
+        "path": "MilkyWay-tex-4.jpg",
+        "contentLength": 181952.16666666666,
+        "contentLengthIdentity": 181952.16666666666,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f7a"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 1024,
+          "width": 1024,
+          "cubeFace": 5
+        },
+        "path": "MilkyWay-tex-5.jpg",
+        "contentLength": 181952.16666666666,
+        "contentLengthIdentity": 181952.16666666666,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f7b"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 512,
+          "width": 512,
+          "cubeFace": 0
+        },
+        "path": "MilkyWay-low-0.jpg",
+        "contentLength": 51567.666666666664,
+        "contentLengthIdentity": 51567.666666666664,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f7c"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 512,
+          "width": 512,
+          "cubeFace": 1
+        },
+        "path": "MilkyWay-low-1.jpg",
+        "contentLength": 51567.666666666664,
+        "contentLengthIdentity": 51567.666666666664,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f7d"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 512,
+          "width": 512,
+          "cubeFace": 2
+        },
+        "path": "MilkyWay-low-2.jpg",
+        "contentLength": 51567.666666666664,
+        "contentLengthIdentity": 51567.666666666664,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f7e"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 512,
+          "width": 512,
+          "cubeFace": 3
+        },
+        "path": "MilkyWay-low-3.jpg",
+        "contentLength": 51567.666666666664,
+        "contentLengthIdentity": 51567.666666666664,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f7f"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 512,
+          "width": 512,
+          "cubeFace": 4
+        },
+        "path": "MilkyWay-low-4.jpg",
+        "contentLength": 51567.666666666664,
+        "contentLengthIdentity": 51567.666666666664,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f80"
+      },
+      {
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "height": 512,
+          "width": 512,
+          "cubeFace": 5
+        },
+        "path": "MilkyWay-low-5.jpg",
+        "contentLength": 51567.666666666664,
+        "contentLengthIdentity": 51567.666666666664,
+        "contentType": "image/jpeg",
+        "_id": "54db92b8d0ffa66a28552f81"
+      },
+      {
+        "properties": {
+          "compression": "dxt",
+          "pixelFormat": "rgb",
+          "height": 1024,
+          "width": 1024
+        },
+        "path": "MilkyWay-dxt.dds",
+        "contentLength": 1578177,
+        "contentLengthIdentity": 4194512,
+        "contentType": "image/x-dds",
+        "_id": "54db92b8d0ffa66a28552f82"
+      },
+      {
+        "properties": {
+          "compression": "dxt",
+          "pixelFormat": "rgb",
+          "height": 512,
+          "width": 512
+        },
+        "path": "MilkyWay-dxt-low.dds",
+        "contentLength": 455067,
+        "contentLengthIdentity": 1048784,
+        "contentType": "image/x-dds",
+        "_id": "54db92b8d0ffa66a28552f83"
+      }
+    ],
+    "components": {},
+    "componentsOrder": [],
+    "template": false,
+    "veroldAsset": true,
+    "hasPreview": true,
+    "children": {}
+  },
+  {
+    "id": "539b4fd6c92acfdf770006e9",
+    "parentAssetId": "539b4fd6c92acfdf770006e9",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "application",
+    "name": "Application",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "runtimeVersion": null,
+      "container": "#verold3d",
+      "engineName": "Default",
+      "visible": true,
+      "useVeroldLoader": false,
+      "loadStartupScene": "5106adb643bfc70200000181"
+    },
+    "resources": [],
+    "components": {
+      "rendering_component": {
+        "isBuiltIn": true,
+        "componentData": {
+          "logarithmicDepthBuffer": true,
+          "shadowMapDebug": false,
+          "shadowMapCullFace": 1,
+          "shadowMapAutoUpdate": true,
+          "shadowMapType": 2,
+          "shadowMapEnabledMobile": false,
+          "shadowMapEnabled": false,
+          "precision": "mediump",
+          "clearAlpha": 0,
+          "clearColor": 0,
+          "devicePixelRatio": 0,
+          "autoClear": false,
+          "preserveDrawingBuffer": true,
+          "antialias": true,
+          "renderOnDemand": false,
+          "scene": "5106adb643bfc70200000181",
+          "camera": "5106adb643bfc70200000182",
+          "gammaInput": true,
+          "gammaOutput": true
+        },
+        "scriptId": "verold_renderer",
+        "enabled": true
+      },
+      "filters_component": {
+        "isBuiltIn": true,
+        "componentData": {
+          "video": {
+            "grayscale": false,
+            "sCount": 512,
+            "sIntensity": 0.05,
+            "nIntensity": 0.15,
+            "enabled": false
+          },
+          "sepia": {
+            "amount": 0.9,
+            "enabled": false
+          },
+          "dof": {
+            "focus": 1,
+            "aperture": 0.025,
+            "aspect": 1,
+            "enabled": false
+          },
+          "ssao": {
+            "gDisplace": 0.4,
+            "diffArea": 0.4,
+            "radius": 8,
+            "noiseAmount": 0.0002,
+            "lumInfluence": 0.75,
+            "aoClamp": 0.75,
+            "onlyAO": 0,
+            "depthScale": 40000,
+            "fogEnabled": 1,
+            "enabled": false
+          },
+          "vignette": {
+            "darkness": 1,
+            "offset": 1,
+            "enabled": false
+          },
+          "fxaa": {
+            "enabled": false
+          },
+          "toneMapping": {
+            "luminance": 1,
+            "maxLuminance": 16,
+            "exposureBias": 1,
+            "adaptSpeed": 0.5,
+            "adaptive": true,
+            "enabled": false
+          },
+          "bloom": {
+            "resolution": 256,
+            "sigma": 4,
+            "strength": 1,
+            "enabled": false
+          }
+        },
+        "scriptId": "render_filters_component",
+        "enabled": true
+      }
+    },
+    "componentsOrder": [
+      "filters_component",
+      "rendering_component"
+    ],
+    "children": {}
+  },
+  {
+    "id": "5106adb643bfc70200000182",
+    "parentId": "5106adb643bfc70200000181",
+    "parentAssetId": "5106adb643bfc70200000181",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "camera",
+    "name": "Orbiting Camera",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "scale": {
+        "z": 1,
+        "y": 1,
+        "x": 1
+      },
+      "orientation": {
+        "w": 0.9757837365041783,
+        "z": 0,
+        "y": 0,
+        "x": -0.2187375129554699
+      },
+      "position": {
+        "z": 0.8778522101778619,
+        "y": 0.4062584272739155,
+        "x": 0
+      },
+      "bottom": -1,
+      "top": 1,
+      "right": 1,
+      "left": -1,
+      "far": 12000,
+      "near": 0.01,
+      "aspect": 1.7777777777777777,
+      "visible": true,
+      "type": "PerspectiveCamera",
+      "fov": "50"
+    },
+    "resources": [],
+    "components": {
+      "camera_controller": {
+        "isBuiltIn": true,
+        "componentData": {
+          "enableZoom": true,
+          "enablePan": true,
+          "pitchAngleBounds": {
+            "min": -75,
+            "max": 75
+          },
+          "movementSpeed": 3,
+          "lookSpeed": 1,
+          "invertZoom": false,
+          "usePointerLock": false,
+          "inertialDamping": 0.2,
+          "invertY": false,
+          "invertX": false
+        },
+        "scriptId": "free_camera_controller",
+        "enabled": false
+      },
+      "renderView_component": {
+        "isBuiltIn": true,
+        "componentData": {
+          "enableShadows": true,
+          "enablePreRenderFunctions": true,
+          "renderTarget": null,
+          "clearDepth": true,
+          "clearColor": false,
+          "renderGroup": 0,
+          "viewportHeight": "100%",
+          "viewportWidth": "100%",
+          "viewportBottom": "0px",
+          "viewportLeft": "0px",
+          "enabled": true
+        },
+        "scriptId": "render_view_component",
+        "enabled": false
+      },
+      "filters_comp": {
+        "isBuiltIn": true,
+        "componentData": {
+          "video": {
+            "grayscale": false,
+            "sCount": 512,
+            "sIntensity": 0.05,
+            "nIntensity": 0.15,
+            "enabled": false,
+            "override": false
+          },
+          "sepia": {
+            "amount": 0.9,
+            "enabled": false,
+            "override": false
+          },
+          "dof": {
+            "focus": 1,
+            "aperture": 0.025,
+            "aspect": 1,
+            "enabled": false,
+            "override": false
+          },
+          "ssao": {
+            "gDisplace": 0.4,
+            "diffArea": 0.4,
+            "radius": 8,
+            "noiseAmount": 0.0002,
+            "lumInfluence": 0.75,
+            "aoClamp": 0.75,
+            "onlyAO": 0,
+            "depthScale": 40000,
+            "fogEnabled": 1,
+            "enabled": false,
+            "override": false
+          },
+          "vignette": {
+            "darkness": 1,
+            "offset": 1,
+            "enabled": false,
+            "override": false
+          },
+          "fxaa": {
+            "enabled": false,
+            "override": false
+          },
+          "toneMapping": {
+            "luminance": 1,
+            "maxLuminance": 16,
+            "exposureBias": 1,
+            "adaptSpeed": 0.5,
+            "adaptive": true,
+            "override": false
+          },
+          "bloom": {
+            "resolution": 256,
+            "sigma": 4,
+            "strength": 1,
+            "enabled": false,
+            "override": false
+          }
+        },
+        "enabled": false,
+        "scriptId": "camera_filters_script"
+      }
+    },
+    "componentsOrder": [
+      "filters_comp",
+      "renderView_component",
+      "camera_controller",
+      "2ffb3477-873f-4758-aa9b-b2c2d99096ca"
+    ],
+    "template": false,
+    "children": {}
+  },
+  {
+    "id": "551978cae71e97f86554d918",
+    "parentAssetId": "551978cae71e97f86554d918",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "model",
+    "name": "Plane",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "selectable": true,
+      "opacity": 1,
+      "receiveShadow": false,
+      "castShadow": false,
+      "position": {
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "orientation": {
+        "w": 1,
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "visible": true,
+      "boundingbox": {
+        "max": {
+          "z": 0.5,
+          "y": 0.5,
+          "x": 0.5
+        },
+        "min": {
+          "z": -0.5,
+          "y": -0.5,
+          "x": -0.5
+        }
+      },
+      "type": "Plane",
+      "geometry": {
+        "segmentsY": 1,
+        "segmentsX": 1,
+        "scale": {
+          "y": 1,
+          "x": 1
+        }
+      },
+      "scale": {
+        "z": 1,
+        "y": 1,
+        "x": 1
+      }
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "hasPreview": true,
+    "isPrimitive": true,
+    "children": {
+      "551978cbdada7db432be9259": true
+    }
+  },
+  {
+    "id": "551978cbdada7db432be9259",
+    "parentId": "551978cae71e97f86554d918",
+    "parentAssetId": "551978cae71e97f86554d918",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "mesh",
+    "name": "New Plane Mesh",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "visible": true,
+      "boundingbox": {
+        "max": {
+          "z": 0.5,
+          "y": 0.5,
+          "x": 0.5
+        },
+        "min": {
+          "z": -0.5,
+          "y": -0.5,
+          "x": -0.5
+        }
+      },
+      "type": "Plane",
+      "geometry": {
+        "type": "Plane",
+        "segmentsY": 1,
+        "segmentsX": 1,
+        "scale": {
+          "y": 1,
+          "x": 1
+        }
+      },
+      "scale": {
+        "z": 1,
+        "y": 1,
+        "x": 1
+      }
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "isPrimitive": true,
+    "children": {}
+  },
+  {
+    "id": "551978ccdada7db432be925c",
+    "prefabObjectId": "551978cbdada7db432be9259",
+    "prefabAssetId": "551978cae71e97f86554d918",
+    "sourceObjectId": "551978cbdada7db432be9259",
+    "sourceAssetId": "551978cae71e97f86554d918",
+    "prefabInstanceId": "551978ccdada7db432be925b",
+    "parentId": "551978ccdada7db432be925b",
+    "parentAssetId": "5106adb643bfc70200000181",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "mesh",
+    "name": "New Plane Mesh",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "material": "551978d5e71e97f86554d91a",
+      "orientation": {
+        "w": 1,
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "position": {
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "boundingbox": {
+        "max": {
+          "z": 0.5,
+          "y": 3.0616171314629196e-17,
+          "x": 0.5
+        },
+        "min": {
+          "z": -0.5,
+          "y": -3.0616171314629196e-17,
+          "x": -0.5
+        }
+      },
+      "type": "Plane",
+      "geometry": {
+        "type": "Plane",
+        "segmentsY": 1,
+        "segmentsX": 1,
+        "scale": {
+          "y": 1,
+          "x": 1
+        }
+      },
+      "scale": {
+        "z": 1,
+        "y": 1,
+        "x": 1
+      },
+      "visible": true
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "children": {}
+  },
+  {
+    "id": "551978ccdada7db432be925b",
+    "prefabObjectId": "551978cae71e97f86554d918",
+    "prefabAssetId": "551978cae71e97f86554d918",
+    "sourceObjectId": "551978cae71e97f86554d918",
+    "sourceAssetId": "551978cae71e97f86554d918",
+    "prefabInstanceId": "551978ccdada7db432be925b",
+    "parentId": "5106adb643bfc70200000181",
+    "parentAssetId": "5106adb643bfc70200000181",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "model",
+    "name": "Plane",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "selectable": true,
+      "opacity": 1,
+      "receiveShadow": false,
+      "castShadow": false,
+      "boundingbox": {
+        "max": {
+          "z": 0.5,
+          "y": 0.5,
+          "x": 0.5
+        },
+        "min": {
+          "z": -0.5,
+          "y": -0.5,
+          "x": -0.5
+        }
+      },
+      "type": "Plane",
+      "geometry": {
+        "segmentsY": 1,
+        "segmentsX": 1,
+        "scale": {
+          "y": 1,
+          "x": 1
+        }
+      },
+      "scale": {
+        "z": 0.5773502691896258,
+        "y": 0.5773502691896258,
+        "x": 0.5773502691896258
+      },
+      "orientation": {
+        "w": 0.7071067811865476,
+        "z": 0,
+        "y": 0,
+        "x": 0.7071067811865475
+      },
+      "position": {
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "visible": true
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "children": {
+      "551978ccdada7db432be925c": true
+    }
+  },
+  {
+    "id": "551978d5e71e97f86554d91a",
+    "parentAssetId": "551978d5e71e97f86554d91a",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "material",
+    "name": "New Material",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "emissiveTexture": "5106aee5ec062d18180000dd",
+      "emissiveTexturePan": {
+        "y": 0,
+        "x": 0
+      },
+      "emissiveTextureScale": {
+        "y": 1,
+        "x": 1
+      },
+      "emissiveTextureOffset": {
+        "y": 0,
+        "x": 0
+      },
+      "emissiveUVChannel": 0,
+      "emissiveColor": 16777215,
+      "Features": {
+        "Emissive": {
+          "SubFeatures": {
+            "Emissive Texture": {
+              "enabled": true
+            }
+          },
+          "enabled": true
+        },
+        "Reflections": {
+          "enabled": false
+        },
+        "Displacement": {
+          "SubFeatures": {
+            "Displacement Texture": {
+              "enabled": true
+            }
+          },
+          "enabled": false
+        },
+        "Normal Map": {
+          "SubFeatures": {
+            "Parallax": {
+              "enabled": false
+            }
+          },
+          "enabled": false
+        },
+        "Rim Lighting": {
+          "enabled": false
+        },
+        "Specular": {
+          "SubFeatures": {
+            "Specular Texture": {
+              "enabled": false
+            }
+          },
+          "enabled": false
+        },
+        "Diffuse Color": {
+          "SubFeatures": {
+            "AO Texture": {
+              "enabled": false
+            },
+            "Diffuse Texture": {
+              "enabled": true
+            }
+          },
+          "enabled": false
+        },
+        "Lighting": {
+          "enabled": false
+        }
+      },
+      "visible": true,
+      "materialType": "Standard"
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "hasPreview": true,
+    "children": {}
+  },
+  {
+    "id": "55197edfdada7db432be92ac",
+    "parentId": "5106adb643bfc70200000181",
+    "parentAssetId": "5106adb643bfc70200000181",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "light",
+    "name": "point light",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "payload": {
+      "color": 16777181,
+      "orientation": {
+        "w": 1,
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "position": {
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "shadowCascadeOffset": {
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "shadowCascadeBias": [
+        -0.0002,
+        -0.0004,
+        -0.001
+      ],
+      "shadowCascadeHeight": [
+        1024,
+        1024,
+        1024
+      ],
+      "shadowCascadeWidth": [
+        1024,
+        1024,
+        1024
+      ],
+      "shadowCascadeFarZ": [
+        0.9,
+        0.97,
+        0.992
+      ],
+      "shadowCascadeNearZ": [
+        -1,
+        0.9,
+        0.97
+      ],
+      "shadowCascadeCount": 3,
+      "shadowCascade": false,
+      "shadowCameraFar": 50,
+      "shadowCameraNear": 1.4,
+      "shadowCameraBottom": -12,
+      "shadowCameraTop": 12,
+      "shadowCameraRight": 12,
+      "shadowCameraLeft": -12,
+      "shadowMapHeight": 1024,
+      "shadowMapWidth": 1024,
+      "shadowBias": -0.0015,
+      "distance": 10,
+      "intensity": 1.25,
+      "visible": true,
+      "type": "PointLight",
+      "scale": {
+        "z": 10,
+        "y": 10,
+        "x": 10
+      }
+    },
+    "resources": [],
+    "components": {},
+    "componentsOrder": [],
+    "isPrimitive": false,
+    "children": {}
+  }
+]

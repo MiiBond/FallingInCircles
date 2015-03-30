@@ -18,26 +18,34 @@
   <link rel="stylesheet" href="stylesheets/dat.gui.css">
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" href="stylesheets/scene-font.css">
-  
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
   <script type="text/javascript" src="javascripts/browsercaps.js"></script>
 
   <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
   <script src="javascripts/jquery.hashchange.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="javascripts/jquery.easytabs.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="javascripts/jquery.nicescroll.min.js" type="text/javascript" charset="utf-8"></script>
-  <!--<script type="text/javascript" src="http://assets.verold.com/verold_api/verold_api_v1.0.6.js"></script>-->
-  <script type="text/javascript" src="http://assets.verold.com/verold_api/verold_api_v1.unstable.js"></script>
-  <!--<script type="text/javascript" src="javascripts/verold_api_v1.unstable.js"></script>-->
 
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <style>
   
+    /* Application */
+    #verold3d {
+      margin: 0 auto;
+      padding: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
 </head>
 <body>
-
+  
+  <script src="runtime/verold.loader.js"></script>
   <script type="text/javascript" src="javascripts/ui.js"></script>
-  <!--<script type="text/javascript" src="javascripts/VeroldApp.js"></script>-->
+  
   <script type="text/javascript" src="javascripts/GravitationApp.js"></script>
   <script type="text/javascript" src="javascripts/GPGPUSimulation.js"></script>
   <script type="text/javascript" src="javascripts/AsteroidSimulation.js"></script>
@@ -52,8 +60,8 @@
     <h2>The Trojan Asteroids</h2>
   </div>
 
-	<div id="loading-progress-container">
-	 
+  <div id="loading-progress-container">
+   
     <p>Loading...</p>
     <div class="loading-progress">
       <div>&nbsp;</div>
@@ -161,31 +169,20 @@
     <p>Powered by <a href="http://studio.verold.com" target="_blank"><img src="images/verold_logo_white.png" /></a> & <a href="http://mrdoob.github.com/three.js/" target="_blank"><img src="images/three_js_logo.png" height="30" /></a></p>
   </div>
 
+  <div id="verold3d"></div>
+
   <script>
 
     if (BrowserCaps.isWebGLEnabled()) {
       if ( BrowserCaps.isFloatingPointTexturesEnabeled() ) {
         if ( BrowserCaps.isVertexTexturesEnabeled() ) {
-          //var veroldApp = new VeroldApp();
-          
-          var gravApp = new GravitationApp( {
-            el: null,
-            projectId : "5106adb643bfc7020000017f",
-            engineOptions: {
-              enablePostProcess: false,
-              enablePicking: true,
-              shadowMapEnabled: false,
-              //antialias: !veroldApp.isMobile(),
-              handleInput: true,
-              clearColor: 0xff0000,
-              precision: "highp"
-              
-              // success: function() {
-              //   gravApp.startup();
-              // }
-            }
+          verold.load('body', 'application.json', null, function( app ) {
+            
+            var gravApp = new GravitationApp( app );
+
+            gravApp.run();
           });
-          gravApp.run();
+
         }
         else {
           AppUI.vertexTexturesUnavailable();
@@ -215,5 +212,5 @@
 
   </script>
 
-</body>
+ </body>
 </html>
