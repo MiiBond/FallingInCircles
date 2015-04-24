@@ -283,7 +283,7 @@
       var applicationEntity = entities.get(projectData.project.startupApplicationId);
       var selector = applicationEntity && applicationEntity.get('payload.container') || '#verold3d';
       var engineName = applicationEntity && applicationEntity.get('payload.engineName') || 'Default';
-      var useLoader = applicationEntity && applicationEntity.get('payload.useVeroldLoader');
+      var useLoader = applicationEntity && applicationEntity.get('payload.useVeroldLoader') || true;
       var startupScene = applicationEntity && applicationEntity.get('payload.loadStartupScene');
       var applicationAsset;
 

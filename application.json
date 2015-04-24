@@ -6,7 +6,7 @@
     "assetsBaseUrl": "",
     "staticBaseUrl": "",
     "glAssetsBaseUrl": "production/assets",
-    "development": false
+    "development": true
   },
   "project": {
     "id": "5106adb643bfc7020000017f",

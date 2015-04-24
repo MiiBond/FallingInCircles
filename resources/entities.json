@@ -296,48 +296,6 @@
     "children": {}
   },
   {
-    "id": "5106b5232df8ee35210000b6",
-    "parentAssetId": "5106b5232df8ee35210000b6",
-    "projectId": "5106adb643bfc7020000017f",
-    "type": "texture2D",
-    "name": "jupiter_rgb",
-    "description": "",
-    "tags": [],
-    "currentVersion": 1,
-    "rootFolder": "5106adb643bfc7020000017f",
-    "folder": "7cf1cd0335fb2142fc84e0c3b461c3fb",
-    "payload": {
-      "userData": {},
-      "uMapping": "Wrap",
-      "vMapping": "Wrap",
-      "filtering": "Trilinear",
-      "anisotropy": 10,
-      "flipY": true,
-      "isNormalMap": false,
-      "preferCompression": true
-    },
-    "resources": [
-      {
-        "properties": {
-          "compression": "none",
-          "pixelFormat": "rgb",
-          "height": 2048,
-          "width": 2048
-        },
-        "path": "jupiter_rgb.jpg",
-        "contentType": "image/jpeg",
-        "contentLength": 0,
-        "contentLengthIdentity": 0,
-        "_id": "54db8ee37cd7b08718e637be"
-      }
-    ],
-    "components": {},
-    "componentsOrder": [],
-    "template": false,
-    "hasPreview": true,
-    "children": {}
-  },
-  {
     "id": "5106b54943bfc70200000194",
     "prefabObjectId": "5106b4b22df8ee35210000b3",
     "prefabAssetId": "5106b4b22df8ee35210000b3",
@@ -388,8 +346,8 @@
         "z": 0.05481940805955497
       },
       "position": {
-        "x": 0,
-        "y": 0,
+        "x": -0.27817531990717675,
+        "y": 0.00007498106055082304,
         "z": 0
       },
       "center": {
@@ -442,18 +400,19 @@
     "rootFolder": "5106adb643bfc7020000017f",
     "folder": "packages/verold_package_52dd3f4b8c2a9bcc14000019/581395d6ac388ded4f68f0169d2580b8",
     "payload": {
-      "mipmaps": [],
-      "originalWidth": 1024,
-      "originalHeight": 1024,
-      "preferCompression": true,
-      "name": "Texture_With_No_Name",
-      "uMapping": "Wrap",
-      "vMapping": "Wrap",
-      "filtering": "Trilinear",
-      "anisotropy": 1,
-      "flipY": true,
+      "visible": true,
+      "generateMipmaps": true,
       "isNormalMap": false,
-      "generateMipmaps": true
+      "flipY": true,
+      "anisotropy": 1,
+      "filtering": "Trilinear",
+      "vMapping": "Wrap",
+      "uMapping": "Wrap",
+      "name": "Texture_With_No_Name",
+      "preferCompression": true,
+      "originalHeight": 1024,
+      "originalWidth": 1024,
+      "mipmaps": []
     },
     "resources": [
       {
@@ -1174,6 +1133,8 @@
     "currentVersion": 1,
     "rootFolder": "5106adb643bfc7020000017f",
     "payload": {
+      "side": 0,
+      "blending": 2,
       "emissiveTexture": "5106aee5ec062d18180000dd",
       "emissiveTexturePan": {
         "y": 0,
@@ -1322,15 +1283,103 @@
       "visible": true,
       "type": "PointLight",
       "scale": {
-        "z": 10,
-        "y": 10,
-        "x": 10
+        "z": 1,
+        "y": 1,
+        "x": 1
       }
     },
     "resources": [],
     "components": {},
     "componentsOrder": [],
     "isPrimitive": false,
+    "children": {}
+  },
+  {
+    "id": "551997c5a94761a4730070c8",
+    "parentAssetId": "551997c5a94761a4730070c8",
+    "projectId": "5106adb643bfc7020000017f",
+    "type": "texture2D",
+    "name": "Cassini Map",
+    "description": "",
+    "tags": [],
+    "currentVersion": 1,
+    "rootFolder": "5106adb643bfc7020000017f",
+    "folder": "d6ef1ce6e442bcd281b2319b681dcc76",
+    "payload": {
+      "mipmaps": [],
+      "generateMipmaps": true,
+      "isNormalMap": false,
+      "preferCompression": true,
+      "flipY": true,
+      "anisotropy": 1,
+      "filtering": "Trilinear",
+      "vMapping": "Wrap",
+      "uMapping": "Wrap",
+      "visible": true,
+      "originalHeight": 1801,
+      "originalWidth": 3601
+    },
+    "resources": [
+      {
+        "path": "f2a7f893-954c-4b18-9770-274d2fcd1b1d-tex.jpg",
+        "contentType": "image/jpeg",
+        "contentEncoding": "identity",
+        "contentLength": 327597,
+        "contentLengthIdentity": 327597,
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "width": 2048,
+          "height": 1024
+        },
+        "_id": "551997c5a94761a4730070cc"
+      },
+      {
+        "path": "f2a7f893-954c-4b18-9770-274d2fcd1b1d-tex-low.jpg",
+        "contentType": "image/jpeg",
+        "contentEncoding": "identity",
+        "contentLength": 184430,
+        "contentLengthIdentity": 184430,
+        "properties": {
+          "compression": "none",
+          "pixelFormat": "rgb",
+          "width": 1024,
+          "height": 1024
+        },
+        "_id": "551997c5a94761a4730070cb"
+      },
+      {
+        "path": "f2a7f893-954c-4b18-9770-274d2fcd1b1d-tex-dxt.dds",
+        "contentType": "image/x-dds",
+        "contentEncoding": "gzip",
+        "contentLength": 857069,
+        "contentLengthIdentity": 1398248,
+        "properties": {
+          "compression": "dxt",
+          "pixelFormat": "rgb",
+          "width": 2048,
+          "height": 1024
+        },
+        "_id": "551997c5a94761a4730070ca"
+      },
+      {
+        "path": "f2a7f893-954c-4b18-9770-274d2fcd1b1d-tex-dxt-low.dds",
+        "contentType": "image/x-dds",
+        "contentEncoding": "gzip",
+        "contentLength": 471853,
+        "contentLengthIdentity": 699192,
+        "properties": {
+          "compression": "dxt",
+          "pixelFormat": "rgb",
+          "width": 1024,
+          "height": 1024
+        },
+        "_id": "551997c5a94761a4730070c9"
+      }
+    ],
+    "components": {},
+    "componentsOrder": [],
+    "hasPreview": true,
     "children": {}
   }
 ]

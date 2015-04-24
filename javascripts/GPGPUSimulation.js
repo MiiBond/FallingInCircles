@@ -22,8 +22,8 @@ GPGPUSimulation = function( textureWidth, textureHeight, renderer, initialData, 
 	this.sourceTexture = this.createTextureFromData( initialData, textureWidth, textureHeight, textureFormat );
 
 	this.bufferRT_From = new THREE.WebGLRenderTarget(textureWidth, textureWidth, {
-		wrapS: THREE.RepeatWrapping,
-		wrapT: THREE.RepeatWrapping,
+		wrapS: THREE.ClampToEdgeWrapping,
+		wrapT: THREE.ClampToEdgeWrapping,
 		minFilter: THREE.NearestFilter,
 		magFilter: THREE.NearestFilter,
 		format: textureFormat,
@@ -32,11 +32,14 @@ GPGPUSimulation = function( textureWidth, textureHeight, renderer, initialData, 
 		generateMipmaps: false,
 	});
 
+	this.bufferRT_From.depthBuffer = true;
+	this.bufferRT_From.stencilBuffer = true;
+
 	this.bufferRT_From.id = "1";
 
 	this.bufferRT_From.anisotropy = false;
 	this.bufferRT_From.generateMipmaps = false;
-	this.bufferRT_From.premultiplyAlpha = false;
+	// this.bufferRT_From.premultiplyAlpha = false;
 	this.bufferRT_From.flipY = false;
 
 	this.bufferRT_To = this.bufferRT_From.clone();
@@ -75,8 +78,10 @@ GPGPUSimulation = function( textureWidth, textureHeight, renderer, initialData, 
 			textureToCopy: { type: "t", value: null }
 		},
 		vertexShader: copyTexture_vertex_shader,
-		fragmentShader: copyTexture_fragment_shader
-
+		fragmentShader: copyTexture_fragment_shader,
+		blending: THREE.NoBlending,
+		depthTest: false,
+		depthWrite: false,
 	});
 
 
@@ -107,13 +112,17 @@ GPGPUSimulation.prototype.createTextureFromData = function( data, width, height,
 		format,
 		THREE.FloatType,
 		null,
-		THREE.RepeatWrapping,
-		THREE.RepeatWrapping,
+		THREE.ClampToEdgeWrapping,
+		THREE.ClampToEdgeWrapping,
 		THREE.NearestFilter,
 		THREE.NearestFilter
 	);
 
 	texture.needsUpdate = true;
+	texture.generateMipmaps = false;
+	texture.depthBuffer = true;
+	texture.stencilBuffer = true;
+	texture.flipY = false;
 
 	return texture;
 };
@@ -150,11 +159,11 @@ GPGPUSimulation.prototype.simulate = function( ) {
 		this.bufferRT_To );
 
 	this.renderer.setRenderTarget( null );
-}
+};
 
 GPGPUSimulation.prototype.setSimulationMaterial = function( simulationShader, dataTexture_uniformName, sourceTexture_uniformName ) {
 	this.dataTexture_uniformName = dataTexture_uniformName !== undefined ? dataTexture_uniformName : "dataTexture";
 	this.sourceTexture_uniformName = sourceTexture_uniformName !== undefined ? sourceTexture_uniformName : "sourceTexture";
 	this.quadRTT.material = simulationShader;
 	this.quadRTT.material.uniforms[ this.sourceTexture_uniformName ].value = this.sourceTexture;
-}
+};
